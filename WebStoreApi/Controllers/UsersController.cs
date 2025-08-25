@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WebStoreApi.Models;
 
 namespace WebStoreApi.Controllers
 {
@@ -6,9 +7,56 @@ namespace WebStoreApi.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private static List<string> usersList = new List<string>
+        private static List<UserDto> usersList = new List<UserDto>
         {
-            "Bob", "Alice", "Eve", "John", "Mary"
+            new UserDto
+            {
+                FirstName = "Mahmoud",
+                LastName = "Salah",
+                Email = "tmb5F@example.com",
+                Address = "Cairo",
+                Phone = "01012345678",
+            },
+            new UserDto
+            {
+                FirstName = "Ahmed",
+                LastName = "Osama",
+                Email = "tmb6F@example.com",
+                Address = "Alexandria",
+                Phone = "01022345678",
+            },
+            new UserDto
+            {
+                FirstName = "Ali",
+                LastName = "Mansour",
+                Email = "tmb7F@example.com",
+                Address = "Giza",
+                Phone = "01032345678",
+            },
+            new UserDto
+            {
+                FirstName = "Khalid",
+                LastName = "Ahmed",
+                Email = "tmb8F@example.com",
+                Address = "Cairo",
+                Phone = "01042345678",
+            },
+            new UserDto
+            {
+                FirstName = "Hassan",
+                LastName = "Ibrahim",
+                Email = "tmb9F@example.com",
+                Address = "Alexandria",
+                Phone = "01052345678",
+            },
+            new UserDto
+            {
+                FirstName = "Omar",
+                LastName = "Mahmoud",
+                Address = "Giza",
+                Email = "tmb10F@example.com",
+                Phone = "01062345678",
+            }
         };
 
         [HttpGet]
@@ -32,14 +80,14 @@ namespace WebStoreApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser(string user)
+        public IActionResult AddUser(UserDto user)
         {
             usersList.Add(user);
             return Created();
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateUser(string username, int id)
+        public IActionResult UpdateUser(UserDto username, int id)
         {
             if (id > 0 && id < usersList.Count)
             {
