@@ -7,9 +7,9 @@ namespace WebStoreApi.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private static List<UserDto> usersList = new List<UserDto>
+        private static List<UserDto> usersList = new()
         {
-            new UserDto
+            new()
             {
                 FirstName = "Mahmoud",
                 LastName = "Salah",
@@ -17,7 +17,7 @@ namespace WebStoreApi.Controllers
                 Address = "Cairo",
                 Phone = "01012345678",
             },
-            new UserDto
+            new()
             {
                 FirstName = "Ahmed",
                 LastName = "Osama",
@@ -25,7 +25,7 @@ namespace WebStoreApi.Controllers
                 Address = "Alexandria",
                 Phone = "01022345678",
             },
-            new UserDto
+            new()
             {
                 FirstName = "Ali",
                 LastName = "Mansour",
@@ -33,7 +33,7 @@ namespace WebStoreApi.Controllers
                 Address = "Giza",
                 Phone = "01032345678",
             },
-            new UserDto
+            new()
             {
                 FirstName = "Khalid",
                 LastName = "Ahmed",
@@ -41,7 +41,7 @@ namespace WebStoreApi.Controllers
                 Address = "Cairo",
                 Phone = "01042345678",
             },
-            new UserDto
+            new()
             {
                 FirstName = "Hassan",
                 LastName = "Ibrahim",
@@ -49,7 +49,7 @@ namespace WebStoreApi.Controllers
                 Address = "Alexandria",
                 Phone = "01052345678",
             },
-            new UserDto
+            new()
             {
                 FirstName = "Omar",
                 LastName = "Mahmoud",
