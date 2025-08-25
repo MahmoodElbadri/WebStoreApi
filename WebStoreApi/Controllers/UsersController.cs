@@ -83,10 +83,24 @@ namespace WebStoreApi.Controllers
         public IActionResult AddUser(UserDto user)
         {
             usersList.Add(user);
+            ModelState.AddModelError(nameof(user.Email), "Email already exists");
+            return BadRequest(ModelState);
             return Created();
         }
 
-        [HttpPut("{id}")]
+        [HttpGet("{username:alpha}")]
+        public IActionResult GetUser(string username)
+        {
+            var user = usersList.FirstOrDefault(tmp => tmp.FirstName.Contains(username, StringComparison.OrdinalIgnoreCase)
+            || tmp.LastName.Contains(username, StringComparison.OrdinalIgnoreCase));
+            if (user is not null)
+            {
+                return Ok(user);
+            }
+            return NotFound();
+        }
+
+        [HttpPut("{id:int}")]
         public IActionResult UpdateUser(UserDto username, int id)
         {
             if (id > 0 && id < usersList.Count)
@@ -103,8 +117,9 @@ namespace WebStoreApi.Controllers
             if (id > 0 && id < usersList.Count)
             {
                 usersList.RemoveAt(id);
+                return NoContent();
             }
-            return NoContent();
+            return NotFound();
         }
     }
 }
