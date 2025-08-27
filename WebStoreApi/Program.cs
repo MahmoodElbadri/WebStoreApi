@@ -1,4 +1,6 @@
 
+using WebStoreApi.Middlewares;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //reading variables from appsettings.json
@@ -26,6 +28,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<TimingMiddleware>();
 
 app.UseHttpsRedirection();
 
